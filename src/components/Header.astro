@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import HuevoImage from "../assets/huevo.jpg";
+---
+
+<div class="bg-gray-800 w-full h-96 flex justify-around items-center">
+  <div class="text-amber-50 flex flex-col gap-6">
+    <h1 class="font-bold text-4xl w-80">
+      Creamos webs desde cero<span class="text-amber-400">.</span>
+    </h1>
+    <h2 class="text-xl w-80">
+      Diseño, desarrollo y estrategia para marcas que quieran destacar.
+    </h2>
+    <div class="flex gap-3">
+      <div
+        class="text-gray-800 bg-amber-400 w-fit px-4 py-2 rounded-lg font-bold cursor-pointer select-none hover:bg-gray-50 duration-300"
+      >
+        Empezar proyecto
+      </div>
+      <div
+        class="text-gray-50 border-gray-50 border w-fit px-4 py-2 rounded-lg font-bold cursor-pointer select-none hover:bg-gray-50 hover:text-gray-800 duration-300"
+      >
+        Ver trabajos
+      </div>
+    </div>
+  </div>
+  <Image class="hidden xl:block w-64 rounded-full" src={HuevoImage} alt="Proyectos web emergiendo de un huevo, de Webeo." />
+</div>
