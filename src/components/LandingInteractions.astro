@@ -1,0 +1,110 @@
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const runWhenIdle = (callback: () => void) => {
+    const schedule =
+      window.requestIdleCallback ||
+      ((idleCallback: () => void) => window.setTimeout(idleCallback, 1));
+
+    schedule(callback);
+  };
+
+  runWhenIdle(() => {
+    const menuButton = document.querySelector(".mobile-menu-trigger");
+    const menuPanel = document.querySelector(".mobile-menu-panel");
+
+    const closeMenu = () => {
+      menuButton?.setAttribute("aria-expanded", "false");
+      menuPanel?.classList.add("invisible", "translate-y-2", "opacity-0");
+    };
+
+    menuButton?.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      menuPanel?.classList.toggle("invisible", isOpen);
+      menuPanel?.classList.toggle("translate-y-2", isOpen);
+      menuPanel?.classList.toggle("opacity-0", isOpen);
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (!menuButton?.contains(target) && !menuPanel?.contains(target)) closeMenu();
+    });
+
+    document.querySelectorAll("a[data-scroll-link]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const anchor = event.currentTarget;
+        if (!(anchor instanceof HTMLAnchorElement)) return;
+        const hash = anchor.hash;
+        const target = hash ? document.querySelector(hash) : null;
+        if (!target) return;
+
+        event.preventDefault();
+        closeMenu();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.pushState(null, "", `${window.location.pathname}${hash}`);
+      });
+    });
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+
+    document.querySelectorAll<HTMLElement>("[data-animate]").forEach((element) => {
+      element.style.opacity = "0";
+      element.style.transform = "translateY(18px)";
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-stagger-item]").forEach((element) => {
+      element.style.opacity = "0";
+      element.style.transform = "translateY(16px)";
+    });
+
+    inView(
+      "[data-animate]",
+      (element) => {
+        animate(
+          element,
+          { opacity: 1, transform: "translateY(0px)" },
+          { duration: 0.55, easing: [0.22, 1, 0.36, 1] },
+        );
+      },
+      { margin: "0px 0px -12% 0px" },
+    );
+
+    inView(
+      "[data-stagger]",
+      (section) => {
+        const items = section.querySelectorAll("[data-stagger-item]");
+        animate(
+          items,
+          { opacity: 1, transform: "translateY(0px)" },
+          { delay: stagger(0.06), duration: 0.45, easing: [0.22, 1, 0.36, 1] },
+        );
+      },
+      { margin: "0px 0px -10% 0px" },
+    );
+
+    inView(
+      "[data-counter]",
+      (counter) => {
+        if (!(counter instanceof HTMLElement)) return;
+        if (counter.dataset.counterAnimated === "true") return;
+
+        counter.dataset.counterAnimated = "true";
+        const target = Number(counter.dataset.counterTarget ?? 0);
+        const suffix = counter.dataset.counterSuffix ?? "";
+        const formatter = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0 });
+
+        animate(0, target, {
+          duration: 1.15,
+          easing: [0.22, 1, 0.36, 1],
+          onUpdate: (value) => {
+            counter.textContent = `${formatter.format(Math.round(value))}${suffix}`;
+          },
+        });
+      },
+      { margin: "0px 0px -8% 0px" },
+    );
+  });
+</script>

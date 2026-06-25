@@ -1,0 +1,27 @@
+---
+import CtaButton from "../components/CtaButton.astro";
+import Layout from "../layouts/Layout.astro";
+
+const whatsappUrl =
+  "https://wa.me/34600000000?text=Hola%20Webeo%2C%20quiero%20mejorar%20mi%20web%20y%20captar%20mas%20clientes";
+const contactEmail = "hola@webeo.es";
+---
+
+<Layout title="Contacto - Webeo" description="Contacta con Webeo para crear o mejorar tu web.">
+  <section class="bg-[#fbfaf7] px-5 py-16 text-[#171b17] md:px-8">
+    <div class="mx-auto max-w-3xl">
+      <a class="text-sm font-black text-[#173a2a]" href="/">Webeo</a>
+      <h1 class="mt-10 text-4xl font-black tracking-tight md:text-6xl">Contacto</h1>
+      <p class="mt-6 text-lg leading-8 text-[#596359]">
+        Cuéntanos qué quieres mejorar: una web nueva, más contactos, SEO, campañas o una aplicación web a medida.
+      </p>
+      <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+        <CtaButton href={whatsappUrl} label="Escribir por WhatsApp" target="_blank" rel="noreferrer" />
+        <CtaButton href={`mailto:${contactEmail}`} label={contactEmail} variant="secondary" />
+      </div>
+      <div class="mt-10 rounded-lg border border-[#e6e0d5] bg-white p-6 leading-7 text-[#4f594f]">
+        También puedes usar esta página como base para añadir teléfono, dirección o un formulario cuando tengas los datos definitivos.
+      </div>
+    </div>
+  </section>
+</Layout>

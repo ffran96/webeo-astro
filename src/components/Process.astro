@@ -1,31 +1,36 @@
 ---
+import CtaButton from "./CtaButton.astro";
 
+interface Props {
+  steps: string[];
+  whatsappUrl: string;
+}
+
+const { steps, whatsappUrl } = Astro.props;
 ---
 
-<div
-  class="flex flex-col w-full gap-8 h-fit pb-16 items-center bg-gray-200"
->
-  <h3 class="tracking-widest pt-4 
- text-2xl font-semibold text-gray-800 uppercase">
-    <span class="text-4xl text-amber-400">...</span>{" "}Confía en el proceso
-  </h3>
-  <div class="flex flex-col xl:flex-row gap-6">
-    <div class="bg-gray-50 p-4 rounded-2xl flex flex-col gap-2 shadow-md">
-      <h4 class="text-2xl font-bold text-gray-800">
-        <span class="text-2xl font-bold text-gray-500">01</span>{" "}Desde la
-        idea
-      </h4><p class="text-lg w-72">Creamos desde cero, sin plantillas.</p>
+<section id="proceso" class="scroll-mt-24 bg-[#173a2a] text-white">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="max-w-3xl" data-animate>
+      <p class="text-sm font-bold uppercase tracking-[.18em] text-[#f0b94d]">Proceso</p>
+      <h2 class="mt-4 text-4xl font-black tracking-tight md:text-5xl">De una idea dispersa a un lanzamiento con dirección.</h2>
     </div>
-    <div class="bg-gray-50 p-4 rounded-2xl flex flex-col gap-2 shadow-md">
-      <h4 class="text-2xl font-bold text-gray-800">
-        <span class="text-2xl font-bold text-gray-500">02</span>{" "}Diseño
-        estratégico
-      </h4><p class="text-lg w-72">Cada detalle pensado para conectar.</p>
+    <div class="mt-12 grid gap-4 md:grid-cols-4" data-stagger>
+      {steps.map((step, index) => (
+        <div class="border-t border-white/18 pt-5" data-stagger-item>
+          <span class="text-sm font-black text-[#f0b94d]">{String(index + 1).padStart(2, "0")}</span>
+          <p class="mt-4 text-xl font-bold leading-7">{step}</p>
+        </div>
+      ))}
     </div>
-    <div class="bg-gray-50 p-4 rounded-2xl flex flex-col gap-2 shadow-md">
-      <h4 class="text-2xl font-bold text-gray-800">
-        <span class="text-2xl font-bold text-gray-500">03</span>{" "}Diseño real
-      </h4><p class="text-lg w-72">Código limpio y escalable.</p>
-    </div>
+    <CtaButton
+      class="mt-12"
+      href={whatsappUrl}
+      label="Agendar diagnóstico gratuito"
+      variant="inverse"
+      target="_blank"
+      rel="noreferrer"
+      animate
+    />
   </div>
-</div>
+</section>

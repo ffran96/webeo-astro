@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LegalPage from "../components/LegalPage.astro";
+---
+
+<Layout title="Términos de uso - Webeo" description="Condiciones generales de uso de la web de Webeo.">
+  <LegalPage
+    title="Términos de uso"
+    description="Estas condiciones regulan el acceso y uso básico de la web de Webeo."
+    items={[
+      "El contenido de esta web tiene carácter informativo y puede actualizarse sin aviso previo.",
+      "Las propuestas, precios y alcances de proyecto se definirán siempre de forma personalizada.",
+      "No está permitido copiar, reproducir o reutilizar elementos de la web sin autorización.",
+      "Antes del lanzamiento final, recomendamos revisar estos términos con los datos legales definitivos.",
+    ]}
+  />
+</Layout>

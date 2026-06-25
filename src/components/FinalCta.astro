@@ -1,0 +1,24 @@
+---
+import CtaButton from "./CtaButton.astro";
+
+interface Props {
+  whatsappUrl: string;
+}
+
+const { whatsappUrl } = Astro.props;
+---
+
+<section class="border-y border-black/5 bg-white">
+  <div class="mx-auto max-w-7xl px-5 py-16 text-center md:px-8" data-animate>
+    <p class="mx-auto max-w-3xl text-2xl font-black leading-tight md:text-4xl">
+      Si tu web no explica bien lo que haces, no carga rápido o no genera contactos, Webeo puede convertirla en una herramienta de negocio.
+    </p>
+    <CtaButton
+      class="mt-8"
+      href={whatsappUrl}
+      label="Quiero mejorar mi web"
+      target="_blank"
+      rel="noreferrer"
+    />
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LegalPage from "../components/LegalPage.astro";
+---
+
+<Layout title="Política de privacidad - Webeo" description="Información sobre privacidad y tratamiento de datos en Webeo.">
+  <LegalPage
+    title="Política de privacidad"
+    description="Esta página explica de forma sencilla cómo se tratarán los datos enviados a Webeo."
+    items={[
+      "Los datos que nos envíes se usarán para responder a tu solicitud y valorar tu proyecto.",
+      "No compartimos tus datos con terceros salvo obligación legal o servicios necesarios para gestionar la comunicación.",
+      "Puedes solicitar acceso, rectificación o eliminación de tus datos escribiendo a Webeo.",
+      "Antes de publicar la web, conviene completar esta página con los datos fiscales y de contacto definitivos.",
+    ]}
+  />
+</Layout>

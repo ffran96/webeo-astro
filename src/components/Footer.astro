@@ -1,0 +1,60 @@
+---
+import CtaButton from "./CtaButton.astro";
+
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+interface FooterSection {
+  title: string;
+  links: FooterLink[];
+}
+
+interface Props {
+  sections: FooterSection[];
+  whatsappUrl: string;
+  email: string;
+}
+
+const { sections, whatsappUrl, email } = Astro.props;
+---
+
+<footer class="bg-[#111611] text-white">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-[1.2fr_.8fr_.8fr] md:px-8">
+    <div data-animate>
+      <p class="text-2xl font-black">Webeo</p>
+      <p class="mt-4 max-w-sm leading-7 text-white/65">
+        Webs, aplicaciones y marketing digital para negocios que quieren captar mejor.
+      </p>
+      <div class="mt-6 grid gap-2">
+        <span class="text-xs font-black uppercase tracking-[.18em] text-[#f0b94d]">Contacto</span>
+        <a class="w-fit text-base font-bold text-white/85 transition hover:text-white" href={`mailto:${email}`}>{email}</a>
+      </div>
+      <CtaButton
+        class="mt-7"
+        href={whatsappUrl}
+        label="Solicitar presupuesto"
+        variant="inverse"
+        size="sm"
+        target="_blank"
+        rel="noreferrer"
+      />
+    </div>
+    {sections.map((section) => (
+      <div data-animate>
+        <h2 class="text-sm font-black uppercase tracking-[.18em] text-[#f0b94d]">{section.title}</h2>
+        <div class="mt-5 grid gap-3">
+          {section.links.map((link) => (
+            <a data-scroll-link={link.href.startsWith("#") ? true : undefined} class="text-white/70 transition hover:text-white" href={link.href}>
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+  <div class="border-t border-white/10 px-5 py-5 text-center text-sm font-semibold text-white/45">
+    © 2026 Webeo. Todos los derechos reservados.
+  </div>
+</footer>

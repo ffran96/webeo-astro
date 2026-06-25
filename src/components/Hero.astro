@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import CtaButton from "./CtaButton.astro";
+import HeroImage from "../assets/webeo-hero.png";
+
+interface Props {
+  whatsappUrl: string;
+}
+
+const { whatsappUrl } = Astro.props;
+---
+
+<section class="mx-auto grid max-w-7xl gap-12 px-5 pb-12 pt-16 md:px-8 md:pb-20 md:pt-24 lg:grid-cols-[.92fr_1.08fr] lg:items-center">
+  <div data-animate>
+    <p class="mb-5 inline-flex rounded-full border border-[#d8d3c8] bg-white/70 px-4 py-2 text-sm font-semibold text-[#526052]">
+      Agencia web, SEO y captación digital
+    </p>
+    <h1 class="max-w-4xl text-5xl font-black leading-[.96] tracking-tight text-[#121612] md:text-7xl">
+      Creamos webs que parecen simples, pero venden mucho mejor.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg leading-8 text-[#566056] md:text-xl">
+      En Webeo diseñamos y desarrollamos páginas, aplicaciones web y estrategias de marketing para que tu negocio tenga una presencia digital clara, rápida y preparada para captar clientes.
+    </p>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <CtaButton
+        class="w-full sm:w-fit"
+        href={whatsappUrl}
+        label="Quiero captar más clientes"
+        size="lg"
+        target="_blank"
+        rel="noreferrer"
+      />
+      <CtaButton
+        class="w-full sm:w-fit"
+        href="#servicios"
+        label="Ver cómo te ayudamos"
+        variant="secondary"
+        size="lg"
+        scroll
+      />
+    </div>
+  </div>
+
+  <div class="relative" data-animate>
+    <Image
+      class="aspect-[4/3] w-full rounded-[28px] object-cover shadow-[0_24px_70px_rgba(37,43,36,.16)]"
+      src={HeroImage}
+      alt="Mockups de webs, SEO, campañas y embudos de conversión creados por Webeo."
+      loading="eager"
+    />
+  </div>
+</section>

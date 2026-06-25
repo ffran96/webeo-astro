@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LegalPage from "../components/LegalPage.astro";
+---
+
+<Layout title="Política de cookies - Webeo" description="Información sobre el uso de cookies en Webeo.">
+  <LegalPage
+    title="Política de cookies"
+    description="Esta página resume el uso previsto de cookies y tecnologías similares en la web de Webeo."
+    items={[
+      "Utilizamos cookies técnicas necesarias para que la web funcione correctamente.",
+      "Podemos usar cookies de analítica para entender el rendimiento de la página y mejorar la experiencia.",
+      "Si activamos herramientas publicitarias o de medición avanzada, actualizaremos esta política con el detalle correspondiente.",
+      "Puedes configurar o eliminar las cookies desde los ajustes de tu navegador.",
+    ]}
+  />
+</Layout>

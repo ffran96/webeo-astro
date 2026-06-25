@@ -1,19 +1,90 @@
 ---
-import Header from '../components/Header.astro';
-import Process from '../components/Process.astro';
-import Services from '../components/Services.astro';
-import Born from '../components/Born.astro';
-import Portfolio from '../components/Portfolio.astro';
-import Layout from '../layouts/Layout.astro';
+import FinalCta from "../components/FinalCta.astro";
+import Hero from "../components/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import MetricsStrip from "../components/MetricsStrip.astro";
+import Portfolio from "../components/Portfolio.astro";
+import Process from "../components/Process.astro";
+import Results from "../components/Results.astro";
+import Services from "../components/Services.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const whatsappUrl =
+  "https://wa.me/34600000000?text=Hola%20Webeo%2C%20quiero%20mejorar%20mi%20web%20y%20captar%20mas%20clientes";
+
+const services = [
+  {
+    title: "Webs que convierten",
+    copy: "Diseño y desarrollo de páginas rápidas, elegantes y preparadas para convertir visitas en contactos.",
+  },
+  {
+    title: "Aplicaciones web",
+    copy: "Reservas, áreas privadas, paneles, formularios avanzados y herramientas a medida para operar mejor.",
+  },
+  {
+    title: "SEO y contenido",
+    copy: "Arquitectura, rendimiento, contenido y SEO técnico para ganar visibilidad en búsquedas relevantes.",
+  },
+  {
+    title: "SEM y campañas",
+    copy: "Google Ads, landing pages y medición para invertir con intención y aprender de cada clic.",
+  },
+  {
+    title: "Analítica y CRO",
+    copy: "Eventos, embudos, mapas de conversión y mejoras continuas para entender qué frena al usuario.",
+  },
+  {
+    title: "Automatizaciones",
+    copy: "Conexión con CRM, email, WhatsApp, formularios y procesos internos para ahorrar tiempo comercial.",
+  },
+];
+
+const projects = [
+  {
+    title: "Clínica dental local",
+    type: "Web corporativa + SEO local",
+    result: "+41% solicitudes",
+    tone: "bg-[#173a2a]",
+  },
+  {
+    title: "Estudio de arquitectura",
+    type: "Portfolio visual + captación",
+    result: "Leads cualificados",
+    tone: "bg-[#d9b25f]",
+  },
+  {
+    title: "SaaS de reservas",
+    type: "Aplicación web + embudo",
+    result: "Demo lista",
+    tone: "bg-[#7b8f78]",
+  },
+];
+
+const processSteps = [
+  "Diagnóstico y objetivos",
+  "Propuesta visual y estrategia",
+  "Desarrollo y medición",
+  "Lanzamiento y mejora continua",
+];
+
+const metrics = [
+  { value: 5, suffix: "+", label: "años de experiencia digital" },
+  { value: 35, suffix: "+", label: "webs y proyectos creados" },
+  { value: 24, suffix: "+", label: "clientes con los que hemos trabajado" },
+];
+
 ---
 
-<Layout>
-	<Header />
-	<Process />
-	<Services />
-	<Born />
-	<Portfolio />
+<Layout
+  title="Webeo - Webs, SEO y campañas para captar más clientes"
+  description="Agencia de marketing digital especializada en webs, aplicaciones web, SEO, SEM, analítica y automatizaciones para captar clientes online."
+>
+  <main id="inicio" class="min-h-screen bg-[#fbfaf7] text-[#171b17]">
+    <Hero whatsappUrl={whatsappUrl} />
+    <MetricsStrip metrics={metrics} />
+    <Services services={services} whatsappUrl={whatsappUrl} />
+    <Portfolio projects={projects} whatsappUrl={whatsappUrl} />
+    <Process steps={processSteps} whatsappUrl={whatsappUrl} />
+    <Results whatsappUrl={whatsappUrl} />
+    <FinalCta whatsappUrl={whatsappUrl} />
+  </main>
 </Layout>

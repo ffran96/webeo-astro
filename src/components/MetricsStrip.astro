@@ -1,0 +1,31 @@
+---
+interface Metric {
+  value: number;
+  suffix?: string;
+  label: string;
+}
+
+interface Props {
+  metrics: Metric[];
+}
+
+const { metrics } = Astro.props;
+---
+
+<section class="border-y border-black/5 bg-white">
+  <div class="mx-auto grid max-w-7xl gap-5 px-5 py-7 md:grid-cols-3 md:px-8" data-stagger>
+    {metrics.map((metric) => (
+      <div class="flex items-baseline gap-3" data-stagger-item>
+        <strong
+          class="text-3xl font-black text-[#173a2a]"
+          data-counter
+          data-counter-target={metric.value}
+          data-counter-suffix={metric.suffix ?? ""}
+        >
+          0{metric.suffix ?? ""}
+        </strong>
+        <span class="text-sm font-semibold leading-5 text-[#596359]">{metric.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
