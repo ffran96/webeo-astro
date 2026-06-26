@@ -1,5 +1,6 @@
 ---
 import CtaButton from "./CtaButton.astro";
+import Logo from "./Logo.astro";
 
 interface FooterLink {
   label: string;
@@ -22,7 +23,7 @@ const { sections, email } = Astro.props;
 <footer class="bg-[#111611] text-white">
   <div class="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-[1.2fr_.8fr_.8fr] md:px-8">
     <div data-animate>
-      <p class="text-2xl font-black">Webeo</p>
+      <Logo markClass="h-10 w-10" textClass="text-2xl font-black tracking-tight text-white" />
       <p class="mt-4 max-w-sm leading-7 text-white/65">
         Webs, aplicaciones y marketing digital para negocios que quieren captar mejor.
       </p>

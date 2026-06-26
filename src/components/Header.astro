@@ -1,5 +1,6 @@
 ---
 import CtaButton from "./CtaButton.astro";
+import Logo from "./Logo.astro";
 
 interface NavLink {
   label: string;
@@ -15,7 +16,7 @@ const { navLinks } = Astro.props;
 
 <header class="sticky top-0 z-30 border-b border-black/5 bg-[#fbfaf7]/90 backdrop-blur-xl">
   <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-8">
-    <a href="/" class="text-xl font-black tracking-tight" aria-label="Webeo inicio">Webeo</a>
+    <Logo />
 
     <div class="hidden items-center gap-8 text-sm font-medium text-[#4b544d] md:flex">
       {navLinks.map((link) => (
