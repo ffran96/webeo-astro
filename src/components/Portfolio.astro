@@ -10,10 +10,9 @@ interface Project {
 
 interface Props {
   projects: Project[];
-  whatsappUrl: string;
 }
 
-const { projects, whatsappUrl } = Astro.props;
+const { projects } = Astro.props;
 ---
 
 <section id="portfolio" class="scroll-mt-24 bg-white">
@@ -24,10 +23,8 @@ const { projects, whatsappUrl } = Astro.props;
         <h2 class="mt-4 text-4xl font-black tracking-tight md:text-5xl">Trabajos visuales, claros y orientados a negocio.</h2>
       </div>
       <CtaButton
-        href={whatsappUrl}
         label="Quiero algo así"
-        target="_blank"
-        rel="noreferrer"
+        whatsappMessage="portfolio"
       />
     </div>
 

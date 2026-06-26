@@ -8,10 +8,9 @@ interface Service {
 
 interface Props {
   services: Service[];
-  whatsappUrl: string;
 }
 
-const { services, whatsappUrl } = Astro.props;
+const { services } = Astro.props;
 ---
 
 <section id="servicios" class="scroll-mt-24 mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
@@ -24,10 +23,8 @@ const { services, whatsappUrl } = Astro.props;
       </p>
       <CtaButton
         class="mt-8"
-        href={whatsappUrl}
         label="Recibir una propuesta"
-        target="_blank"
-        rel="noreferrer"
+        whatsappMessage="services"
       />
     </div>
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" data-stagger>

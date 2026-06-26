@@ -13,11 +13,10 @@ interface FooterSection {
 
 interface Props {
   sections: FooterSection[];
-  whatsappUrl: string;
   email: string;
 }
 
-const { sections, whatsappUrl, email } = Astro.props;
+const { sections, email } = Astro.props;
 ---
 
 <footer class="bg-[#111611] text-white">
@@ -33,12 +32,10 @@ const { sections, whatsappUrl, email } = Astro.props;
       </div>
       <CtaButton
         class="mt-7"
-        href={whatsappUrl}
         label="Solicitar presupuesto"
         variant="inverse"
         size="sm"
-        target="_blank"
-        rel="noreferrer"
+        whatsappMessage="footer"
       />
     </div>
     {sections.map((section) => (

@@ -8,9 +8,6 @@ import Process from "../components/Process.astro";
 import Results from "../components/Results.astro";
 import Services from "../components/Services.astro";
 
-const whatsappUrl =
-  "https://wa.me/34600000000?text=Hola%20Webeo%2C%20quiero%20mejorar%20mi%20web%20y%20captar%20mas%20clientes";
-
 const services = [
   {
     title: "Webs que convierten",
@@ -79,12 +76,12 @@ const metrics = [
   description="Agencia de marketing digital especializada en webs, aplicaciones web, SEO, SEM, analítica y automatizaciones para captar clientes online."
 >
   <main id="inicio" class="min-h-screen bg-[#fbfaf7] text-[#171b17]">
-    <Hero whatsappUrl={whatsappUrl} />
+    <Hero />
     <MetricsStrip metrics={metrics} />
-    <Services services={services} whatsappUrl={whatsappUrl} />
-    <Portfolio projects={projects} whatsappUrl={whatsappUrl} />
-    <Process steps={processSteps} whatsappUrl={whatsappUrl} />
-    <Results whatsappUrl={whatsappUrl} />
-    <FinalCta whatsappUrl={whatsappUrl} />
+    <Services services={services} />
+    <Portfolio projects={projects} />
+    <Process steps={processSteps} />
+    <Results />
+    <FinalCta />
   </main>
 </Layout>

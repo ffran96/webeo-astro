@@ -1,9 +1,11 @@
 ---
+import { getWhatsappUrl, whatsappMessages, type WhatsappMessageKey } from "../config/contact";
+
 type Variant = "primary" | "secondary" | "inverse" | "menu";
 type Size = "sm" | "md" | "lg";
 
 interface Props {
-  href: string;
+  href?: string;
   label: string;
   variant?: Variant;
   size?: Size;
@@ -12,6 +14,7 @@ interface Props {
   rel?: string;
   scroll?: boolean;
   animate?: boolean;
+  whatsappMessage?: WhatsappMessageKey;
 }
 
 const {
@@ -24,7 +27,13 @@ const {
   rel,
   scroll = false,
   animate = false,
+  whatsappMessage,
 } = Astro.props;
+
+const isWhatsapp = Boolean(whatsappMessage);
+const resolvedHref = whatsappMessage ? getWhatsappUrl(whatsappMessages[whatsappMessage]) : href ?? "#";
+const resolvedTarget = isWhatsapp ? target ?? "_blank" : target;
+const resolvedRel = isWhatsapp ? rel ?? "noreferrer" : rel;
 
 const variantClasses: Record<Variant, string> = {
   primary: "bg-[#173a2a] text-white shadow-[0_16px_34px_rgba(23,58,42,.18)] hover:bg-[#0f2c1f]",
@@ -49,9 +58,9 @@ const baseClasses =
   data-scroll-link={scroll ? true : undefined}
   data-animate={animate ? true : undefined}
   class={`${baseClasses} ${className}`}
-  href={href}
-  target={target}
-  rel={rel}
+  href={resolvedHref}
+  target={resolvedTarget}
+  rel={resolvedRel}
 >
   {label}
 </a>

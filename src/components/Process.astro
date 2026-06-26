@@ -3,10 +3,9 @@ import CtaButton from "./CtaButton.astro";
 
 interface Props {
   steps: string[];
-  whatsappUrl: string;
 }
 
-const { steps, whatsappUrl } = Astro.props;
+const { steps } = Astro.props;
 ---
 
 <section id="proceso" class="scroll-mt-24 bg-[#173a2a] text-white">
@@ -25,11 +24,9 @@ const { steps, whatsappUrl } = Astro.props;
     </div>
     <CtaButton
       class="mt-12"
-      href={whatsappUrl}
       label="Agendar diagnóstico gratuito"
       variant="inverse"
-      target="_blank"
-      rel="noreferrer"
+      whatsappMessage="process"
       animate
     />
   </div>

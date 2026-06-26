@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import LandingInteractions from "../components/LandingInteractions.astro";
+import { contactEmail } from "../config/contact";
 import "../styles/global.css";
 
 interface Props {
@@ -13,10 +14,6 @@ const {
 	title = "Webeo - Agencia web y marketing digital",
 	description = "Webeo crea webs, aplicaciones web, SEO y campañas digitales para captar clientes online.",
 } = Astro.props;
-
-const whatsappUrl =
-	"https://wa.me/34600000000?text=Hola%20Webeo%2C%20quiero%20mejorar%20mi%20web%20y%20captar%20mas%20clientes";
-const contactEmail = "hola@webeo.es";
 
 const navLinks = [
 	{ label: "Servicios", href: "/#servicios" },
@@ -60,11 +57,11 @@ const footerSections = [
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header navLinks={navLinks} whatsappUrl={whatsappUrl} />
+		<Header navLinks={navLinks} />
 		<div class="site-content">
 			<slot />
 		</div>
-		<Footer sections={footerSections} whatsappUrl={whatsappUrl} email={contactEmail} />
+		<Footer sections={footerSections} email={contactEmail} />
 		<LandingInteractions />
 	</body>
 </html>

@@ -8,10 +8,9 @@ interface NavLink {
 
 interface Props {
   navLinks: NavLink[];
-  whatsappUrl: string;
 }
 
-const { navLinks, whatsappUrl } = Astro.props;
+const { navLinks } = Astro.props;
 ---
 
 <header class="sticky top-0 z-30 border-b border-black/5 bg-[#fbfaf7]/90 backdrop-blur-xl">
@@ -26,11 +25,9 @@ const { navLinks, whatsappUrl } = Astro.props;
 
     <div class="hidden md:block">
       <CtaButton
-        href={whatsappUrl}
         label="Pedir propuesta"
         size="sm"
-        target="_blank"
-        rel="noreferrer"
+        whatsappMessage="header"
       />
     </div>
 
@@ -52,11 +49,9 @@ const { navLinks, whatsappUrl } = Astro.props;
         ))}
         <CtaButton
           class="mt-1"
-          href={whatsappUrl}
           label="Pedir propuesta"
           variant="menu"
-          target="_blank"
-          rel="noreferrer"
+          whatsappMessage="header"
         />
       </div>
     </div>

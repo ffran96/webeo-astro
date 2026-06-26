@@ -1,11 +1,5 @@
 ---
 import CtaButton from "./CtaButton.astro";
-
-interface Props {
-  whatsappUrl: string;
-}
-
-const { whatsappUrl } = Astro.props;
 ---
 
 <section class="border-y border-black/5 bg-white">
@@ -15,10 +9,8 @@ const { whatsappUrl } = Astro.props;
     </p>
     <CtaButton
       class="mt-8"
-      href={whatsappUrl}
       label="Quiero mejorar mi web"
-      target="_blank"
-      rel="noreferrer"
+      whatsappMessage="finalCta"
     />
   </div>
 </section>

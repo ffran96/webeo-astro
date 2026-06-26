@@ -1,11 +1,6 @@
 ---
 import CtaButton from "./CtaButton.astro";
 
-interface Props {
-  whatsappUrl: string;
-}
-
-const { whatsappUrl } = Astro.props;
 ---
 
 <section id="resultados" class="scroll-mt-24 mx-auto grid max-w-7xl gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-2 lg:items-center">
@@ -17,10 +12,8 @@ const { whatsappUrl } = Astro.props;
     </p>
     <CtaButton
       class="mt-8"
-      href={whatsappUrl}
       label="Detectar oportunidades"
-      target="_blank"
-      rel="noreferrer"
+      whatsappMessage="results"
     />
   </div>
   <div class="grid gap-4" data-stagger>
