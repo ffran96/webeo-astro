@@ -47,8 +47,22 @@
       });
     });
 
+    const formatter = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0 });
+    const setCounterValue = (counter: HTMLElement, value: number) => {
+      const suffix = counter.dataset.counterSuffix ?? "";
+      counter.textContent = `${formatter.format(Math.round(value))}${suffix}`;
+    };
+
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) return;
+
+    if (reducedMotion) {
+      document.querySelectorAll<HTMLElement>("[data-counter]").forEach((counter) => {
+        const target = Number(counter.dataset.counterTarget ?? 0);
+        setCounterValue(counter, target);
+      });
+
+      return;
+    }
 
     document.querySelectorAll<HTMLElement>("[data-animate]").forEach((element) => {
       element.style.opacity = "0";
@@ -93,14 +107,12 @@
 
         counter.dataset.counterAnimated = "true";
         const target = Number(counter.dataset.counterTarget ?? 0);
-        const suffix = counter.dataset.counterSuffix ?? "";
-        const formatter = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0 });
 
         animate(0, target, {
           duration: 1.15,
           easing: [0.22, 1, 0.36, 1],
           onUpdate: (value) => {
-            counter.textContent = `${formatter.format(Math.round(value))}${suffix}`;
+            setCounterValue(counter, value);
           },
         });
       },
