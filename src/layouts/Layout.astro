@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import LandingInteractions from "../components/LandingInteractions.astro";
+import ScrollTopButton from "../components/ScrollTopButton.astro";
 import { contactEmail } from "../config/contact";
 import "../styles/global.css";
 
@@ -80,6 +81,7 @@ const footerSections = [
 			<slot />
 		</div>
 		<Footer sections={footerSections} email={contactEmail} />
+		<ScrollTopButton />
 		<LandingInteractions />
 	</body>
 </html>
