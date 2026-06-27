@@ -3,7 +3,7 @@ export const contactEmail = "hola@webeo.es";
 const whatsappPhone = "34689154632";
 
 export const whatsappMessages = {
-  header: "Holaa, me gustaría pedir una propuesta para mejorar mi presencia digital 😊",
+  header: "Holaa, me gustaría recibir una propuesta para mejorar mi presencia digital 😊",
   hero: "Holaa, me gustaría crear o mejorar mi web para captar más clientes 🚀 ¿Podemos hablar?☺️",
   services: "Holaa, me gustaría recibir una propuesta para una página web nueva, SEO o campañas digitales 😄",
   portfolio: "Holaa, he visto vuestro portfolio y me gustaría algo parecido para mi negocio 🤗",
