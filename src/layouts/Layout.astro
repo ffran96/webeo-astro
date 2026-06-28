@@ -3,7 +3,8 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import LandingInteractions from "../components/LandingInteractions.astro";
 import ScrollTopButton from "../components/ScrollTopButton.astro";
-import { contactEmail } from "../config/contact";
+import { contactEmail } from "../data/contact";
+import { defaultSeo, footerSections, navLinks, site, socialImage } from "../data/layout";
 import "../styles/global.css";
 
 interface Props {
@@ -12,41 +13,9 @@ interface Props {
 }
 
 const {
-	title = "Webeo - Agencia web y marketing digital",
-	description = "Webeo crea webs, aplicaciones web, SEO y campañas digitales para captar clientes online.",
+	title = defaultSeo.title,
+	description = defaultSeo.description,
 } = Astro.props;
-
-const siteUrl = "https://webeo.es";
-const socialImage = `${siteUrl}/og-image.png`;
-
-const navLinks = [
-	{ label: "Servicios", href: "/#servicios" },
-	{ label: "Portfolio", href: "/#portfolio" },
-	{ label: "Proceso", href: "/#proceso" },
-	{ label: "Resultados", href: "/#resultados" },
-];
-
-const footerSections = [
-	{
-		title: "Webeo",
-		links: [
-			{ label: "Inicio", href: "/#inicio" },
-			{ label: "Servicios", href: "/#servicios" },
-			{ label: "Portfolio", href: "/#portfolio" },
-			{ label: "Proceso", href: "/#proceso" },
-			{ label: "Resultados", href: "/#resultados" },
-		],
-	},
-	{
-		title: "Legal",
-		links: [
-			{ label: "Cookies", href: "/cookies" },
-			{ label: "Privacidad", href: "/privacidad" },
-			{ label: "Términos de uso", href: "/terminos" },
-			{ label: "Contacto", href: "/contacto" },
-		],
-	},
-];
 ---
 
 <!doctype html>
@@ -58,10 +27,10 @@ const footerSections = [
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="description" content={description} />
 		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="Webeo" />
+		<meta property="og:site_name" content={site.name} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:url" content={siteUrl} />
+		<meta property="og:url" content={site.url} />
 		<meta property="og:image" content={socialImage} />
 		<meta property="og:image:secure_url" content={socialImage} />
 		<meta property="og:image:type" content="image/png" />
